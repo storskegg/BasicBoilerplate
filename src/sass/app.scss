@@ -1,8 +1,127 @@
-$red: tomato;
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'VT323';
+	background-color: #111;
+}
+
+button {
+	font-family: 'VT323';
+}
+
+.hangman {
+	display: flex;
+	flex-direction: column;
+	width: 90vmin;
+	height: 60vmin;
+	border: 2vmin solid white;
+	background-color: white;
+}
+
+.menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 5vmin;
+	border-bottom: 1px solid black;
+}
+
+.game-state {
+	padding: 2vmin 2vmin;
+	border-right: 1px solid black;
+}
+
+.game-state--active .game-state__text {
+	color: black;
+}
+
+.game-state--win .game-state__text {
+	color: green;
+	animation: blink .5s steps(3, end) infinite;
+}
+
+.game-state--fail .game-state__text {
+	color: red;
+	animation: blink .5s steps(3, end) infinite;
+}
+
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.new-game {
+	padding: 2vmin 2vmin;
+	background-color: white;
+	cursor: pointer;
+	border: none;
+}
+
+.new-game:hover {
+	background-color: lightgrey;
+}
+
+.new-game:focus {
+	outline: 0;
+}
+
+.fails {
+	flex-grow: 1;
+	font-size: 5vmin;
+	text-align: center;
+	padding: 2vmin 2vmin;
+	border-right: 1px solid black;
+}
+
+.word {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 5vmin;
+	margin: 5vmin 0;
+	height: 10vmin;
+}
+
+.char {
+	padding-right: .5vmin;
+}
+
+.keyboard {
+	display: flex;
+	font-size: 5vmin;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.key {
+	width: 7.69%;
+	cursor: pointer;
+	text-align: center;
+	outline: 1px solid black;
+}
+
+.key:hover {
+	background-color: lightgrey;
+}
+
+.key--fade-out {
+	pointer-events: none;
+	color: rgba(black, .2);
+}
 
 #root {
-  border: 1px dotted $red;
-  margin: 1em auto 0;
-  padding: 0.5em 1em;
-  width: 75vw;
+	background-color: #fff;
 }

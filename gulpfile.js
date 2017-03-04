@@ -15,6 +15,7 @@ var autoprefixer = require('autoprefixer');
 // All about that ES
 var rollup = require('gulp-better-rollup');
 var nodeResolve  = require('rollup-plugin-node-resolve');
+var rootImport = require('rollup-plugin-root-import');
 var replace = require('rollup-plugin-replace');
 var commonjs = require('rollup-plugin-commonjs');
 var babel = require('rollup-plugin-babel');
@@ -50,12 +51,27 @@ gulp.task('jsx', ['eslint'], function () {
                     main: true,
                     jsnext: true
                 }),
+                rootImport({
+                    root: __dirname + '/src/js',
+                    useEntry: 'prepend',
+                    extensions: ['.jsx', '.js']
+                }),
                 replace({
                     'process.env.NODE_ENV': JSON.stringify(env)
                 }),
                 commonjs({
-                    include: 'node_modules/**',
+                    include: [
+                      'node_modules/**',
+                      'src/js/components'
+                    ],
                     namedExports: {
+                      'react': [
+                          'cloneElement',
+                          'createElement',
+                          'PropTypes',
+                          'Children',
+                          'Component'
+                      ],
                       'react-dom': ['render']
                     }
                 }),
@@ -70,6 +86,7 @@ gulp.task('jsx', ['eslint'], function () {
                     ],
                     plugins: [
                       'external-helpers',
+                      'transform-decorators-legacy',
                       'transform-react-jsx'
                     ],
                     babelrc: false,
@@ -80,7 +97,16 @@ gulp.task('jsx', ['eslint'], function () {
             external: [ 'jquery', 'lodash' ],
             format: 'iife'
         }))
-        .pipe(uglify())
+        .pipe(uglify({
+            compress: {
+                screw_ie8: true,
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: true
+        }))
         .pipe(concat('app.js'))
         .pipe(sourcemaps.write(''))
         .pipe(plumber.stop())

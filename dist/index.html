@@ -2,11 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Hangman</title>
   <link rel="stylesheet" href="/css/app.min.css">
 </head>
 <body>
-  <h1>If we're working... <small>you should see a familiar greeting below.</small></h1>
+  <div class="hangman">
+  	<div class="menu">
+  		<div class="game-state">
+  			<span class="game-state__text"></span>
+  		</div>
+  		<div class="fails">FAILS: 0/10</div>
+  		<button class="new-game">NEW GAME</button>
+  	</div>
+  	<div class="word"></div>
+  	<div class="keyboard">
+  		<div class="key">A</div>
+  		<div class="key">B</div>
+  		<div class="key">C</div>
+  		<div class="key">D</div>
+  		<div class="key">E</div>
+  		<div class="key">F</div>
+  		<div class="key">G</div>
+  		<div class="key">H</div>
+  		<div class="key">I</div>
+  		<div class="key">J</div>
+  		<div class="key">K</div>
+  		<div class="key">L</div>
+  		<div class="key">M</div>
+  		<div class="key">N</div>
+  		<div class="key">O</div>
+  		<div class="key">P</div>
+  		<div class="key">Q</div>
+  		<div class="key">R</div>
+  		<div class="key">S</div>
+  		<div class="key">T</div>
+  		<div class="key">U</div>
+  		<div class="key">V</div>
+  		<div class="key">W</div>
+  		<div class="key">X</div>
+  		<div class="key">Y</div>
+  		<div class="key">Z</div>
+  	</div>
+  </div>
   <div id="root"></div>
   <script src="/js/app.js" async defer></script>
 </body>
