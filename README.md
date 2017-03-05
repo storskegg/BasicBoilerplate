@@ -10,7 +10,9 @@ The repo assumes the use of Yarn (https://yarnpkg.com), and requires the install
 
 ## Get Started
 
-`yarn`
+`> yarn`
+
+`> gulp watch`
 
 ## What's currently supported
 
