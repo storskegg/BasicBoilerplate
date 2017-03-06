@@ -27,6 +27,8 @@ var bs = require('browser-sync').create();
 
 const env = process.env.NODE_ENV;
 
+console.info('WORKING DIRECTORY: ' + __dirname);
+
 gulp.task('html', function() {
     return gulp.src('src/index.html')
         .pipe(gulp.dest('dist'))
@@ -34,7 +36,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('eslint', function() {
-    return gulp.src('src/js/**/*.jsx')
+    return gulp.src(['src/js/**/*.js', 'src/js/**/*.jsx'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -62,7 +64,7 @@ gulp.task('jsx', ['eslint'], function () {
                 commonjs({
                     include: [
                       'node_modules/**',
-                      'src/js/components'
+                      'src/js/**'
                     ],
                     namedExports: {
                       'react': [
@@ -77,9 +79,11 @@ gulp.task('jsx', ['eslint'], function () {
                 }),
                 babel({
                     presets: [
-                        ['latest', {
-                            es2015: {
-                                modules: false
+                        ['env', {
+                            loose: true,
+                            modules: false,
+                            targets: {
+                                uglify: true
                             }
                         }],
                         ['react']

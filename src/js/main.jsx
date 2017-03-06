@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CharKey from './components/CharKey.jsx';
+import CharKey from 'components/CharKey';
 
 ReactDOM.render(
   (
