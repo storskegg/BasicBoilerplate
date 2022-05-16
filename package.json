@@ -42,7 +42,7 @@
     "rollup-plugin-replace": "^1.1.1"
   },
   "dependencies": {
-    "autoprefixer": "^6.7.2",
+    "autoprefixer": "^9.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.4.1",
     "gulp-uglifyjs": "^0.6.2",
