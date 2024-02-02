@@ -44,7 +44,7 @@
   "dependencies": {
     "autoprefixer": "^6.7.2",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^2.4.1",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglifyjs": "^0.6.2",
     "postcss": "^5.2.12",
     "react": "^15.4.2",
